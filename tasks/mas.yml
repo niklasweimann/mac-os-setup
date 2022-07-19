@@ -1,0 +1,26 @@
+- name: Install a list of apps
+  community.general.mas:
+    id:
+      - 1501244873 # MoneyStats  
+      - 784801555  # Microsoft OneNote
+      - 823766827  # OneDrive 
+      - 441258766  # Magnet
+      - 462058435  # Microsoft Excel
+      - 1564329434 # Momentum 
+      - 462062816  # Microsoft PowerPoint 
+      - 1481302432 # Instapaper Save 
+      - 1018301773 # AdBlock Pro
+      - 985367838  # Microsoft Outlook
+      - 1435055351 # PDFify
+      - 732710998  # Enpass
+      - 1295203466 # Microsoft Remote Desktop
+      - 1529448980 # Reeder
+      - 1147396723 # WhatsApp 
+      - 288545208  # Instapaper  
+      - 1440147259 # AdGuard for Safari
+      - 462054704  # Microsoft Word
+    state: present
+
+- name: Upgrade all installed Mac App Store apps
+  community.general.mas:
+    upgrade_all: yes

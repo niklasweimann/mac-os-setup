@@ -1,0 +1,34 @@
+- name: Ensuring homebrew is installed
+  stat:
+    path: /opt/homebrew/
+  register: homebrew_check
+
+- name: Installing homebrew
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when:
+    - homebrew_check.stat.exists == false
+
+- name: Update update homebrew
+  community.general.homebrew:
+    update_homebrew: yes
+
+- name: Install tools
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - asciiquarium
+    - ffmpeg
+    - go
+    - helm
+    - htop
+    - ipcalc
+    - node
+    - telnet
+    - terraform
+    - tmux
+    - wget
+    - yarn
+    - youtube-dl
+    - zsh-syntax-highlighting
+    - mas

@@ -1,0 +1,25 @@
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/{{ mac_username }}/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="agnoster"
+
+plugins=(git docker docker-compose git helm zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+
+
+bindkey '[C' forward-word
+bindkey '^ ' autosuggest-accept
+bindkey '[D' backward-word
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export GOPATH=/Users/$USER/dev/go
+export PATH=$GOPATH/bin:$PATH

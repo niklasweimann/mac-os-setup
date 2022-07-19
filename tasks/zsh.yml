@@ -1,0 +1,21 @@
+- name: Check whether .oh-my-zsh exists
+  stat:
+    path: ~/.oh-my-zsh
+  register: oh_my_stats
+
+- name: Oh-My-Zsh
+  shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  when: oh_my_stats.stat.exists == False
+
+- name: Check whether zsh-autosuggestions is installed
+  stat:
+    path: ~/.oh-my-zsh/plugins/zsh-autosuggestions
+  register: zsh_autosuggestions
+
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+  when: zsh_autosuggestions.stat.exists == False
+
+#todo: Check setup for this plugins git docker docker-compose git helm zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting

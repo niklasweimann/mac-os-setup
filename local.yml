@@ -1,0 +1,7 @@
+- hosts: localhost
+  var:
+    mac_username: niklasweimann
+  tasks:
+    - include_tasks: tasks/brew.yml
+    - include_tasks: tasks/zsh.yml
+    - include_tasks: tasks/mas.yml
